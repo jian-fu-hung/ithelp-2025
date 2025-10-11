@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct DashboardView: View {
-    @StateObject private var viewModel = MealViewModel()
+    @StateObject private var viewModel = DashboardViewModel()
     
     
     var body: some View {
@@ -58,15 +58,14 @@ struct DashboardView: View {
                 
                 // 新增記錄按鈕
                 Section {
-                    Button(action: {
-                        print("新增記錄")
-                    }) {
-                        Label("新增記錄", systemImage: "plus.circle.fill")
-                            .font(.headline)
-                            .foregroundColor(.blue)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    NavigationLink(destination: AddMealView()) {
+                            Label("新增記錄", systemImage: "plus.circle.fill")
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
+                
             }
             .navigationTitle("今日飲食")
         }
