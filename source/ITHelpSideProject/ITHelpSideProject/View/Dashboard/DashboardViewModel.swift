@@ -8,6 +8,7 @@ Copyright (c) 2017 My Company
 */
 
 import SwiftUI
+import SwiftData
 
 class DashboardViewModel: ObservableObject {
     @Published var records: [MealRecord] = []
@@ -19,6 +20,12 @@ class DashboardViewModel: ObservableObject {
         repository.$records
             .receive(on: RunLoop.main)
             .assign(to: &$records)
+    }
+    
+    func configure(context: ModelContext) {
+        Task {
+            await repository.configure(context: context)
+        }
     }
     
     var totalCalories: Int {

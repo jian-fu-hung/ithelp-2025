@@ -23,16 +23,18 @@ struct MealListView: View {
             } else {
                 List {
                     ForEach(viewModel.records) { meal in
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(meal.name)
-                                .font(.headline)
-                            Text("\(meal.calories) 大卡")
-                                .foregroundColor(.gray)
-                            Text(meal.category.rawValue)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
+                        NavigationLink(destination: MealDetailView(meal: meal)) {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(meal.name)
+                                    .font(.headline)
+                                Text("\(meal.calories) 大卡")
+                                    .foregroundColor(.gray)
+                                Text(meal.category.rawValue)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.vertical, 4)
                         }
-                        .padding(.vertical, 4)
                     }
                     .onDelete {indexSet in
                         viewModel.delete(at:indexSet)

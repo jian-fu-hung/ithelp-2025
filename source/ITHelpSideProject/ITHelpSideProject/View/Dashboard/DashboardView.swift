@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct DashboardView: View {
+    @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = DashboardViewModel()
     
     
@@ -76,6 +77,9 @@ struct DashboardView: View {
                 
             }
             .navigationTitle("今日飲食")
+        }
+        .onAppear {
+            viewModel.configure(context: modelContext)
         }
     }
 }
