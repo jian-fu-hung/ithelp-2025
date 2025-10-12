@@ -65,6 +65,14 @@ struct DashboardView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
+                Section {
+                    NavigationLink(destination: MealListView()) {
+                        Label("查看所有飲食紀錄", systemImage: "list.bullet.rectangle")
+                            .font(.headline)
+                            .foregroundColor(.orange)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
                 
             }
             .navigationTitle("今日飲食")

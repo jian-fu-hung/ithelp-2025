@@ -15,5 +15,6 @@ struct ITHelpSideProjectApp: App {
         WindowGroup {
             DashboardView()
         }
+        .modelContainer(for: MealRecord.self)
     }
 }

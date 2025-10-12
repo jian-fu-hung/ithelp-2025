@@ -31,12 +31,15 @@ class AddMealViewModel: ObservableObject {
             showAlert = true
             return
         }
-                
-        repository.addMeal(
-            name: mealName,
-            calories: calories,
-            category: mealCategory
-        )
+              
+        Task {
+            await repository.addMeal(
+                name: mealName,
+                calories: calories,
+                category: mealCategory
+            )
+        }
+
                 
         // 清空輸入
         mealName = ""

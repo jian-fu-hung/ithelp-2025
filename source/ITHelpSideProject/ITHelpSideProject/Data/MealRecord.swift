@@ -8,11 +8,27 @@ Copyright (c) 2017 My Company
 */
 
 import Foundation
+import SwiftData
 
-struct MealRecord: Identifiable {
-    let id = UUID()
-    let name: String
-    let calories: Int
-    let category: MealCategory
-    let date: Date
+@Model
+class MealRecord {
+    var id: UUID
+    var name: String
+    var calories: Int
+    var category: MealCategory
+    var date: Date
+    
+    init(
+        id: UUID = UUID(),
+        name: String,
+        calories: Int,
+        category: MealCategory,
+        date: Date = .now
+    ) {
+        self.id = id
+        self.name = name
+        self.calories = calories
+        self.category = category
+        self.date = date
+    }
 }
